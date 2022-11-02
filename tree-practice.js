@@ -25,7 +25,15 @@ function findMinBST(rootNode) {
 }
 
 function findMaxBST(rootNode) {
+  if (!rootNode) return;
 
+  let curr = rootNode;
+
+  while (curr.right) {
+    curr = curr.right;
+  }
+
+  return curr.val;
 
   // if (rootNode === null) {
   //   return max;
@@ -37,17 +45,35 @@ function findMaxBST(rootNode) {
 }
 
 function findMinBT(rootNode) {
-  let arr = [];
+  if(!rootNode) return;
+  let min = Infinity;
+  let queue = [];
+  queue.push(rootNode);
+  
+  while(queue.length){
+    let curr = queue.shift()
+    if(curr.val < min) min = curr.val;
 
-  if(!rootNode){
-    return undefined;
+    if(curr.left) queue.push(curr.left);
+    if(curr.right) queue.push(curr.right);
   }
-  //breath first
-
+  return min
 }
 
 function findMaxBT(rootNode) {
-  // Your code here
+  if(!rootNode) return;
+  let max = 0;
+  let queue = [];
+  queue.push(rootNode);
+  
+  while(queue.length){
+    let curr = queue.shift()
+    if(curr.val > max) max = curr.val;
+
+    if(curr.left) queue.push(curr.left);
+    if(curr.right) queue.push(curr.right);
+  }
+  return max
 }
 
 function getHeight(rootNode) {
