@@ -8,8 +8,6 @@ function findMinBST(rootNode, min = Infinity) {
   if (rootNode === null) {
     return min;
   }
-
-  debugger
   if (rootNode.val < min) {
     min = rootNode.val;
   }
@@ -20,8 +18,6 @@ function findMaxBST(rootNode,max = -Infinity) {
   if (rootNode === null) {
     return max;
   }
-
-  debugger
   if (rootNode.val > max) {
     max = rootNode.val;
   }
@@ -29,8 +25,12 @@ function findMaxBST(rootNode,max = -Infinity) {
 }
 
 function findMinBT(rootNode) {
-  // Your code here
+  let arr = [];
 
+  if(!rootNode){
+    return undefined;
+  }
+  //breath first
   
 }
 
