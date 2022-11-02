@@ -49,7 +49,7 @@ function findMinBT(rootNode) {
   let min = Infinity;
   let queue = [];
   queue.push(rootNode);
-  
+
   while(queue.length){
     let curr = queue.shift()
     if(curr.val < min) min = curr.val;
@@ -65,7 +65,7 @@ function findMaxBT(rootNode) {
   let max = 0;
   let queue = [];
   queue.push(rootNode);
-  
+
   while(queue.length){
     let curr = queue.shift()
     if(curr.val > max) max = curr.val;
@@ -76,8 +76,42 @@ function findMaxBT(rootNode) {
   return max
 }
 
-function getHeight(rootNode) {
-  // Your code here
+function getHeight(currentNode) {
+  let min = -1;
+  if (!currentNode) return min;
+  if (!currentNode.left && !currentNode.right) return 0;
+  maxHeight = 0;
+  let count = 0;
+  const queue = [];
+  queue.push(currentNode);
+
+  while(queue.length) {
+    let curr = queue.shift();
+
+    // if currleft true, queue push it, same with right,
+    // if neither are true, at end
+
+    if (!curr.right && !curr.left) {
+      if (count > maxHeight) maxHeight = count;
+      count = 0;
+    }
+    if (curr.left) {
+      queue.push(curr.left);
+    }
+    if (curr.right) {
+      queue.push(curr.right);
+    }
+    count++;
+  }
+
+  return maxHeight;
+
+  /*if (!currentNode) {
+    return length=0 ? -1 : length;
+  }
+
+  getHeight(currentNode.left, length + 1);
+  getHeight(currentNode.right, length + 1);*/
 }
 
 function balancedTree(rootNode) {
