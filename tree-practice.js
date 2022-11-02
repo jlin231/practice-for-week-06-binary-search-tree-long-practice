@@ -4,39 +4,57 @@ const { BinarySearchTree, TreeNode } = require('./binary-search-tree.js');
 
 // Practice problems on binary trees
 
-function findMinBST (rootNode) {
+function findMinBST(rootNode, min = Infinity) {
+  if (rootNode === null) {
+    return min;
+  }
+
+  debugger
+  if (rootNode.val < min) {
+    min = rootNode.val;
+  }
+  return findMinBST(rootNode.left, min);
+}
+
+function findMaxBST(rootNode,max = -Infinity) {
+  if (rootNode === null) {
+    return max;
+  }
+
+  debugger
+  if (rootNode.val > max) {
+    max = rootNode.val;
+  }
+  return findMaxBST(rootNode.right, max);
+}
+
+function findMinBT(rootNode) {
+  // Your code here
+
+  
+}
+
+function findMaxBT(rootNode) {
   // Your code here
 }
 
-function findMaxBST (rootNode) {
+function getHeight(rootNode) {
   // Your code here
 }
 
-function findMinBT (rootNode) {
+function balancedTree(rootNode) {
   // Your code here
 }
 
-function findMaxBT (rootNode) {
+function countNodes(rootNode) {
   // Your code here
 }
 
-function getHeight (rootNode) {
+function getParentNode(rootNode, target) {
   // Your code here
 }
 
-function balancedTree (rootNode) {
-  // Your code here
-}
-
-function countNodes (rootNode) {
-  // Your code here
-}
-
-function getParentNode (rootNode, target) {
-  // Your code here
-}
-
-function inOrderPredecessor (rootNode, target) {
+function inOrderPredecessor(rootNode, target) {
   // Your code here
 }
 
@@ -64,15 +82,25 @@ function deleteNodeBST(rootNode, target) {
 
 }
 
+bstRoot = new TreeNode(4);
+bstRoot.left = new TreeNode(2);
+bstRoot.left.left = new TreeNode(1);
+bstRoot.left.right = new TreeNode(3);
+bstRoot.right = new TreeNode(6);
+bstRoot.right.left = new TreeNode(5);
+bstRoot.right.right = new TreeNode(7);
+console.log(findMinBST(bstRoot))
+
+
 module.exports = {
-    findMinBST,
-    findMaxBST,
-    findMinBT,
-    findMaxBT,
-    getHeight,
-    countNodes,
-    balancedTree,
-    getParentNode,
-    inOrderPredecessor,
-    deleteNodeBST
+  findMinBST,
+  findMaxBST,
+  findMinBT,
+  findMaxBT,
+  getHeight,
+  countNodes,
+  balancedTree,
+  getParentNode,
+  inOrderPredecessor,
+  deleteNodeBST
 }
